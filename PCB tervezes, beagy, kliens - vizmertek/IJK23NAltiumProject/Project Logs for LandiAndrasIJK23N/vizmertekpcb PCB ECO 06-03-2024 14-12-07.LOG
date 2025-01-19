@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=NetQ1_2 Pin=U4-20
+Added Component: Designator=R4(FP_0805_RES)
+Add component (AddParameter): Name = "Name"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Power"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Reference"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetQ1_2 Pin=R4-1
+Added Pin To Net: NetName=NetR4_2 Pin=R4-2
+Added Pin To Net: NetName=NetR4_2 Pin=U4-20
+Added Net: Name=NetR4_2
+Added Member To Class: ClassName=kijelzo Member=Component R4 100

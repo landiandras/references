@@ -1,0 +1,7 @@
+Change component parameters: Designator = "POT1" ("POT1"); Footprint = "potentiometer"; UniqueID = "\LPUSOEFP" ("\LPUSOEFP")
+Change component parameters (AddParameter): Name = "Name"; Value = "10K0 3296W-1-103R (KIC) HELI 25turn CERMET"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0.5W"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "05-05-89"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10K"; VariantName = "[No Variations]"

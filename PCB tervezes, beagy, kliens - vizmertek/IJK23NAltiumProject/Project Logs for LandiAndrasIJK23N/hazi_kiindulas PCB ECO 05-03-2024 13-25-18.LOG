@@ -1,0 +1,53 @@
+Removed Pin From Net: NetName=NetPOT1_2 Pin=POT1-2
+Removed Pin From Net: NetName=NetQ1_2 Pin=Q1-3
+Removed Pin From Net: NetName=NetU2_7 Pin=U2-7
+Removed Pin From Net: NetName=5V Pin=U4-1
+Removed Pin From Net: NetName=GND Pin=U4-2
+Removed Pin From Net: NetName=NetPOT1_3 Pin=U4-3
+Removed Pin From Net: NetName=DB0 Pin=U4-4
+Removed Pin From Net: NetName=DB1 Pin=U4-5
+Removed Pin From Net: NetName=DB2 Pin=U4-6
+Removed Pin From Net: NetName=DB3 Pin=U4-7
+Removed Pin From Net: NetName=DB4 Pin=U4-8
+Removed Pin From Net: NetName=DB5 Pin=U4-9
+Removed Pin From Net: NetName=DB6 Pin=U4-10
+Removed Pin From Net: NetName=DB7 Pin=U4-11
+Removed Pin From Net: NetName=CS1 Pin=U4-12
+Removed Pin From Net: NetName=CS2 Pin=U4-13
+Removed Pin From Net: NetName=RST Pin=U4-14
+Removed Pin From Net: NetName=NetU2_7 Pin=U4-15
+Removed Pin From Net: NetName=DI Pin=U4-16
+Removed Pin From Net: NetName=E Pin=U4-17
+Removed Pin From Net: NetName=NetPOT1_2 Pin=U4-18
+Removed Pin From Net: NetName=5V Pin=U4-19
+Removed Pin From Net: NetName=NetQ1_2 Pin=U4-20
+Removed Member From Class: ClassName=kijelzo Member=U4
+Added Component: Designator=*(FP_LCD)
+Added Pin To Net: NetName=5V Pin=*-1
+Added Pin To Net: NetName=GND Pin=*-2
+Added Pin To Net: NetName=NetU2_7 Pin=*-3
+Added Pin To Net: NetName=DB0 Pin=*-4
+Added Pin To Net: NetName=DB1 Pin=*-5
+Added Pin To Net: NetName=DB2 Pin=*-6
+Added Pin To Net: NetName=DB3 Pin=*-7
+Added Pin To Net: NetName=DB4 Pin=*-8
+Added Pin To Net: NetName=DB5 Pin=*-9
+Added Pin To Net: NetName=DB6 Pin=*-10
+Added Pin To Net: NetName=DB7 Pin=*-11
+Added Pin To Net: NetName=CS1 Pin=*-12
+Added Pin To Net: NetName=CS2 Pin=*-13
+Added Pin To Net: NetName=RST Pin=*-14
+Added Pin To Net: NetName=NetQ1_2 Pin=*-15
+Added Pin To Net: NetName=DI Pin=*-16
+Added Pin To Net: NetName=E Pin=*-17
+Added Pin To Net: NetName=NetPOT1_3 Pin=*-18
+Added Pin To Net: NetName=5V Pin=*-19
+Added Pin To Net: NetName=NetPOT1_2 Pin=*-20
+Added Pin To Net: NetName=NetU2_7 Pin=POT1-2
+Added Pin To Net: NetName=NetPOT1_2 Pin=Q1-3
+Added Pin To Net: NetName=NetQ1_2 Pin=U2-7
+Change Net Name : Old Net Name=NetPOT1_2 New Net Name=Net*_20
+Change Net Name : Old Net Name=NetPOT1_3 New Net Name=Net*_18
+Change Net Name : Old Net Name=NetQ1_2 New Net Name=Net*_15
+Change Net Name : Old Net Name=NetU2_7 New Net Name=Net*_3
+Added Member To Class: ClassName=kijelzo Member=Component * LCD

@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=NetPOT1_3 Pin=U4-3
+Removed Pin From Net: NetName=NetPOT1_2 Pin=U4-18
+Change Component Comment : Designator=U4 Old Comment=RG12864A-BIW-V New Comment=LCD
+Change Component Designator: OldDesignator=U4 NewDesignator=*
+Change component parameters: Designator = "U4" ("*"); Footprint = "FP_LCD"; UniqueID = "\AAGIWCJH" ("\AAGIWCJH")
+Added Pin To Net: NetName=NetPOT1_2 Pin=*-3
+Added Pin To Net: NetName=NetPOT1_3 Pin=*-18
+Change Net Name : Old Net Name=NetPOT1_2 New Net Name=Net*_3
+Change Net Name : Old Net Name=NetPOT1_3 New Net Name=Net*_18
+Change Net Name : Old Net Name=NetQ1_2 New Net Name=Net*_20
+Change Net Name : Old Net Name=NetU2_7 New Net Name=Net*_15
+Added Member To Class: ClassName=kijelzo Member=Component * LCD

@@ -1,0 +1,14 @@
+Change component parameters: Designator = "R4" ("R4"); Footprint = "FP_0805_RES"; UniqueID = "\NCXJYJUD" ("\NCXJYJUD")
+Change component parameters (AddParameter): Name = "Name"; Value = "100R 0805 1% CR-05FL7--100R 0.125W (VIK)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0.125W"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "80-10-74"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "100R 0805 1% CR-05FL7--100R 0.125W (VIK)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "1%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R5" ("R5"); Footprint = "FP_0805_RES"; UniqueID = "\UKWGRSYJ" ("\UKWGRSYJ")
+Change component parameters (AddParameter): Name = "Name"; Value = "100R 0805 1% CR-05FL7--100R 0.125W (VIK)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0.125W"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "80-10-74"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "1%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100"; VariantName = "[No Variations]"

@@ -1,0 +1,50 @@
+Net Status Report
+Filename     : E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc
+Date         : 04/03/2024
+Time         : 18:42:17
+Time Elapsed : 00:00:00
+
+Nets, Layer, Length
+    3V3, Signal Layers Only, 40.624mm
+    CS1, Signal Layers Only, 17.6653mm
+    CS2, Signal Layers Only, 17.6653mm
+    DB0, Signal Layers Only, 16.7765mm
+    DB1, Signal Layers Only, 16.7133mm
+    DB2, Signal Layers Only, 16.7133mm
+    DB3, Signal Layers Only, 17.7654mm
+    DB4, Signal Layers Only, 14.1996mm
+    DB5, Signal Layers Only, 13.7683mm
+    DB6, Signal Layers Only, 13.4558mm
+    DB7, Signal Layers Only, 13.1731mm
+    DI, Signal Layers Only, 32.284mm
+    E, Signal Layers Only, 36.0171mm
+    GNDIC1, Signal Layers Only, 120.9537mm
+    NetF1_1, Signal Layers Only, 9.116mm
+    NetPOT?_2, Signal Layers Only, 14.6188mm
+    NetPOT?_3, Signal Layers Only, 48.6056mm
+    NetQ1_1, Signal Layers Only, 7.5218mm
+    NetQ1_2, Signal Layers Only, 3.7109mm
+    NetR1_1, Signal Layers Only, 137.6178mm
+    NetR5_2, Signal Layers Only, 25.842mm
+    NetU1_21, Signal Layers Only, 101.2931mm
+    NetU1_32, Signal Layers Only, 26.7719mm
+    NetU1_34, Signal Layers Only, 46.338mm
+    NetU1_35, Signal Layers Only, 94.7738mm
+    NetU1_36, Signal Layers Only, 85.0384mm
+    NetU1_37, Signal Layers Only, 89.5856mm
+    NetU1_38, Signal Layers Only, 85.2712mm
+    NetU1_41, Signal Layers Only, 58.3451mm
+    NetU1_42, Signal Layers Only, 82.4179mm
+    NetU1_44, Signal Layers Only, 51.9401mm
+    NetU1_49, Signal Layers Only, 94.3686mm
+    NetU1_51, Signal Layers Only, 102.1542mm
+    NetU1_53, Signal Layers Only, 96.1054mm
+    NetU1_57, Signal Layers Only, 77.6695mm
+    NetU1_60, Signal Layers Only, 89.4781mm
+    NetU1_65, Signal Layers Only, 42.324mm
+    NetU1_67, Signal Layers Only, 44.4841mm
+    NetU1_72, Signal Layers Only, 96.7109mm
+    NetU2_7, Signal Layers Only, 6.5576mm
+    RST, Signal Layers Only, 29.3022mm
+    VCCIC1, Signal Layers Only, 171.381mm
+count : 42

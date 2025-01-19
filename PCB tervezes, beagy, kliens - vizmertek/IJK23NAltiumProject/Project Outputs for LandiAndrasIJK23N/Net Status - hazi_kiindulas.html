@@ -1,0 +1,464 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 { 
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body { 
+			font-family : segoe ui;
+		}
+
+		td, th {  
+			padding: 0.5em;
+			text-align : left;
+		}
+		th { 
+			background-color : #EEEEEE;
+		
+		}
+		th.column1, td.column1 { 
+			width : 50%; 
+		}
+
+        th.column2, td.column2 {
+            width : 25%;
+        }
+
+		table { 
+			width : 100%; 
+            font-size: 0.9em;
+		}
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 5em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error { 
+			color : red;
+			font-weight : bold;
+		}	
+		tr.onmouseout_odd { 
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+			
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);		
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {	
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}	
+	</script><title>Net Status Report</title>
+</head>
+<body onload="document.getElementById('radio_mm').click()"><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD24\Templates\AD_logo.png
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Net Status Report</h1>
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">04/03/2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">18:42:17</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc" class="file"><acronym title="E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc">E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc</acronym></a></td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Units:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">
+<form><input type="radio" name="radio_units" id="radio_mm" onclick="changeUnits(this, 'mm')">mm<input type="radio" name="radio_units" id="radio_mil" onclick="changeUnits(this, 'mil')">mils</form>
+</td>
+</tr>
+</table><a name="IDUIZJXRE224LLOXHNVQJPRCHLTIDBF1RYB3YN5JMUJXZEBOZJ2KJE"><table>
+<tr>
+<th class="column1">Nets</th>
+<th class="column2">Layer</th>
+<th class="column3">Length</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.599mil|Location2.X=3912.401mil|Location1.Y=2212.599mil|Location2.Y=3044mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.599mil|Location2.X=3912.401mil|Location1.Y=2212.599mil|Location2.Y=3044mil|Absolute=True">3V3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="15993720">40.624mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.592mil|Location2.X=2422.276mil|Location1.Y=2194.563mil|Location2.Y=2358.395mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.592mil|Location2.X=2422.276mil|Location1.Y=2194.563mil|Location2.Y=2358.395mil|Absolute=True">CS1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6954832">17.6653mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.589mil|Location2.X=2422.276mil|Location1.Y=2094.563mil|Location2.Y=2258.392mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.589mil|Location2.X=2422.276mil|Location1.Y=2094.563mil|Location2.Y=2258.392mil|Absolute=True">CS2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6954850">17.6653mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.599mil|Location2.X=2426.22mil|Location1.Y=3083.599mil|Location2.Y=3161.393mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.599mil|Location2.X=2426.22mil|Location1.Y=3083.599mil|Location2.Y=3161.393mil|Absolute=True">DB0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6604909">16.7765mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.595mil|Location2.X=2426.22mil|Location1.Y=2983.595mil|Location2.Y=3058.398mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.595mil|Location2.X=2426.22mil|Location1.Y=2983.595mil|Location2.Y=3058.398mil|Absolute=True">DB1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6580049">16.7133mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.595mil|Location2.X=2426.22mil|Location1.Y=2883.595mil|Location2.Y=2958.398mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.595mil|Location2.X=2426.22mil|Location1.Y=2883.595mil|Location2.Y=2958.398mil|Absolute=True">DB2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6580049">16.7133mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.595mil|Location2.X=2426.22mil|Location1.Y=2742.563mil|Location2.Y=2858.398mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.595mil|Location2.X=2426.22mil|Location1.Y=2742.563mil|Location2.Y=2858.398mil|Absolute=True">DB3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6994263">17.7654mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.595mil|Location2.X=2044.331mil|Location1.Y=2683.595mil|Location2.Y=3135.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.595mil|Location2.X=2044.331mil|Location1.Y=2683.595mil|Location2.Y=3135.732mil|Absolute=True">DB4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5590406">14.1996mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.592mil|Location2.X=2044.331mil|Location1.Y=2583.592mil|Location2.Y=3035.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.592mil|Location2.X=2044.331mil|Location1.Y=2583.592mil|Location2.Y=3035.732mil|Absolute=True">DB5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5420573">13.7683mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.592mil|Location2.X=2044.331mil|Location1.Y=2483.592mil|Location2.Y=2935.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.592mil|Location2.X=2044.331mil|Location1.Y=2483.592mil|Location2.Y=2935.732mil|Absolute=True">DB6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5297558">13.4558mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.592mil|Location2.X=2044.331mil|Location1.Y=2383.592mil|Location2.Y=2835.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.592mil|Location2.X=2044.331mil|Location1.Y=2383.592mil|Location2.Y=2835.732mil|Absolute=True">DB7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5186259">13.1731mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.589mil|Location2.X=2566mil|Location1.Y=1676.94mil|Location2.Y=1958.392mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.589mil|Location2.X=2566mil|Location1.Y=1676.94mil|Location2.Y=1958.392mil|Absolute=True">DI</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="12710222">32.284mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.586mil|Location2.X=2591mil|Location1.Y=1651.94mil|Location2.Y=2035.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.586mil|Location2.X=2591mil|Location1.Y=1651.94mil|Location2.Y=2035.732mil|Absolute=True">E</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="14179946">36.0171mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.961mil|Location2.X=4310.937mil|Location1.Y=1319.563mil|Location2.Y=3676.315mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.961mil|Location2.X=4310.937mil|Location1.Y=1319.563mil|Location2.Y=3676.315mil|Absolute=True">GNDIC1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="47619567">120.9537mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3572.024mil|Location2.X=4060.937mil|Location1.Y=3223.063mil|Location2.Y=3410.937mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3572.024mil|Location2.X=4060.937mil|Location1.Y=3223.063mil|Location2.Y=3410.937mil|Absolute=True">NetF1_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3588995">9.116mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.961mil|Location2.X=1780.401mil|Location1.Y=3183.599mil|Location2.Y=3479.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.961mil|Location2.X=1780.401mil|Location1.Y=3183.599mil|Location2.Y=3479.465mil|Absolute=True">NetPOT?_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5755432">14.6188mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.961mil|Location2.X=1780.389mil|Location1.Y=1683.586mil|Location2.Y=3282.614mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.961mil|Location2.X=1780.389mil|Location1.Y=1683.586mil|Location2.Y=3282.614mil|Absolute=True">NetPOT?_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="19136076">48.6056mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1963.441mil|Location2.X=2182.528mil|Location1.Y=1327.473mil|Location2.Y=1512.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1963.441mil|Location2.X=2182.528mil|Location1.Y=1327.473mil|Location2.Y=1512.252mil|Absolute=True">NetQ1_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2961350">7.5218mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.586mil|Location2.X=1914.071mil|Location1.Y=1483.586mil|Location2.Y=1558.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.586mil|Location2.X=1914.071mil|Location1.Y=1483.586mil|Location2.Y=1558.389mil|Absolute=True">NetQ1_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1460974">3.7109mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1419.035mil|Location2.X=2749.437mil|Location1.Y=983.075mil|Location2.Y=3235.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1419.035mil|Location2.X=2749.437mil|Location1.Y=983.075mil|Location2.Y=3235.732mil|Absolute=True">NetR1_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="54180242">137.6178mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=1937.252mil|Location1.Y=1327.473mil|Location2.Y=2187.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=1937.252mil|Location1.Y=1327.473mil|Location2.Y=2187.401mil|Absolute=True">NetR5_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="10174016">25.842mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1889.563mil|Location2.X=4030.965mil|Location1.Y=1912.599mil|Location2.Y=3181.437mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1889.563mil|Location2.X=4030.965mil|Location1.Y=1912.599mil|Location2.Y=3181.437mil|Absolute=True">NetU1_21</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="39879176">101.2931mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3639.599mil|Location2.X=3912.401mil|Location1.Y=1412.599mil|Location2.Y=2459.398mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3639.599mil|Location2.X=3912.401mil|Location1.Y=1412.599mil|Location2.Y=2459.398mil|Absolute=True">NetU1_32</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="10540111">26.7719mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2331.724mil|Location2.X=3912.401mil|Location1.Y=1312.599mil|Location2.Y=2096.056mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2331.724mil|Location2.X=3912.401mil|Location1.Y=1312.599mil|Location2.Y=2096.056mil|Absolute=True">NetU1_34</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="18243320">46.338mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1953.78mil|Location2.X=4055.964mil|Location1.Y=958.075mil|Location2.Y=2985.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1953.78mil|Location2.X=4055.964mil|Location1.Y=958.075mil|Location2.Y=2985.732mil|Absolute=True">NetU1_35</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="37312514">94.7738mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1953.78mil|Location2.X=3912.401mil|Location1.Y=1212.599mil|Location2.Y=3121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1953.78mil|Location2.X=3912.401mil|Location1.Y=1212.599mil|Location2.Y=3121mil|Absolute=True">NetU1_36</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="33479676">85.0384mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1953.78mil|Location2.X=4030.964mil|Location1.Y=983.075mil|Location2.Y=2891.437mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1953.78mil|Location2.X=4030.964mil|Location1.Y=983.075mil|Location2.Y=2891.437mil|Absolute=True">NetU1_37</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="35269925">89.5856mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1953.78mil|Location2.X=3912.401mil|Location1.Y=1112.599mil|Location2.Y=3185.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1953.78mil|Location2.X=3912.401mil|Location1.Y=1112.599mil|Location2.Y=3185.732mil|Absolute=True">NetU1_38</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="33571341">85.2712mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=2040.386mil|Location1.Y=1480.975mil|Location2.Y=2887.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=2040.386mil|Location1.Y=1480.975mil|Location2.Y=2887.401mil|Absolute=True">NetU1_41</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="22970522">58.3451mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1395mil|Location2.X=2792.936mil|Location1.Y=2651.064mil|Location2.Y=3570mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1395mil|Location2.X=2792.936mil|Location1.Y=2651.064mil|Location2.Y=3570mil|Absolute=True">NetU1_42</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="32448007">82.4179mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1395mil|Location2.X=2426.22mil|Location1.Y=2712.599mil|Location2.Y=3545mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1395mil|Location2.X=2426.22mil|Location1.Y=2712.599mil|Location2.Y=3545mil|Absolute=True">NetU1_44</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="20448871">51.9401mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=3714.401mil|Location1.Y=1386.563mil|Location2.Y=2559.398mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=3714.401mil|Location1.Y=1386.563mil|Location2.Y=2559.398mil|Absolute=True">NetU1_49</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="37152989">94.3686mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1319.563mil|Location2.X=3714.401mil|Location1.Y=2312.599mil|Location2.Y=3595mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1319.563mil|Location2.X=3714.401mil|Location1.Y=2312.599mil|Location2.Y=3595mil|Absolute=True">NetU1_51</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="40218193">102.1542mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=3714.401mil|Location1.Y=2212.599mil|Location2.Y=3526.437mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=3714.401mil|Location1.Y=2212.599mil|Location2.Y=3526.437mil|Absolute=True">NetU1_53</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="37836786">96.1054mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=2490.437mil|Location1.Y=1236.563mil|Location2.Y=2785.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=2490.437mil|Location1.Y=1236.563mil|Location2.Y=2785.732mil|Absolute=True">NetU1_57</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="30578549">77.6695mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1367mil|Location2.X=2788mil|Location1.Y=925mil|Location2.Y=2192.437mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1367mil|Location2.X=2788mil|Location1.Y=925mil|Location2.Y=2192.437mil|Absolute=True">NetU1_60</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="35227597">89.4781mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=2242mil|Location1.Y=1310mil|Location2.Y=1995.437mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=2242mil|Location1.Y=1310mil|Location2.Y=1995.437mil|Absolute=True">NetU1_65</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="16663010">42.324mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=2267mil|Location1.Y=1285mil|Location2.Y=2093.437mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1537.599mil|Location2.X=2267mil|Location1.Y=1285mil|Location2.Y=2093.437mil|Absolute=True">NetU1_67</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="17513433">44.4841mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1419.036mil|Location2.X=2806mil|Location1.Y=983.075mil|Location2.Y=3085.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1419.036mil|Location2.X=2806mil|Location1.Y=983.075mil|Location2.Y=3085.732mil|Absolute=True">NetU1_72</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="38075149">96.7109mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.589mil|Location2.X=2040.386mil|Location1.Y=1983.589mil|Location2.Y=2058.392mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.589mil|Location2.X=2040.386mil|Location1.Y=1983.589mil|Location2.Y=2058.392mil|Absolute=True">NetU2_7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2581739">6.5576mm
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.589mil|Location2.X=2253.622mil|Location1.Y=2083.589mil|Location2.Y=2612mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1705.589mil|Location2.X=2253.622mil|Location1.Y=2083.589mil|Location2.Y=2612mil|Absolute=True">RST</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="11536303">29.3022mm
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1725.586mil|Location2.X=3912.401mil|Location1.Y=1599.539mil|Location2.Y=3570.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Egyetem\hallglib\hazi_kiindulas\hazi_kiindulas.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1725.586mil|Location2.X=3912.401mil|Location1.Y=1599.539mil|Location2.Y=3570.276mil|Absolute=True">VCCIC1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="67472838">171.381mm
+			</a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

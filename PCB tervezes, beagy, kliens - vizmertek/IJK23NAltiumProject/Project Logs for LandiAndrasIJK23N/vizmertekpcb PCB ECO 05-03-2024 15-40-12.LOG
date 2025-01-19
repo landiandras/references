@@ -1,0 +1,4 @@
+Change component parameters: Designator = "U4" ("U3"); Footprint = "FP_LCD"; UniqueID = "\AAGIWCJH" ("\AAGIWCJH")
+Change component parameters (AddParameter): Name = "Name"; Value = "RG12864B-TIW-VRAYSTAR OPTRONICS"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "RG12864B-TIW-V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "TME"; VariantName = "[No Variations]"

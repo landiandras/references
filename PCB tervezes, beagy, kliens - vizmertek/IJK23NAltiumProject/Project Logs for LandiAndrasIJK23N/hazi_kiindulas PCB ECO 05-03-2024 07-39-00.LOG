@@ -1,0 +1,84 @@
+Removed Pin From Net: NetName=GNDIC1 Pin=POT-1
+Removed Pin From Net: NetName=NetPOT?_2 Pin=POT-2
+Removed Pin From Net: NetName=NetPOT?_3 Pin=POT-3
+Removed Member From Class: ClassName=kijelzo Member=POT
+Change component parameters: Designator = "C1" ("C1"); Footprint = "FP_0805_CAP_085"; UniqueID = "\JIQXAUXJ" ("\JIQXAUXJ")
+Change component parameters (AddParameter): Name = "Name"; Value = "100nF 0805 10% 50V X7R 0805B104K500NT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "82-13-46"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C2" ("C2"); Footprint = "FP_0805_CAP_085"; UniqueID = "\FFHVFZRW" ("\FFHVFZRW")
+Change component parameters (AddParameter): Name = "Name"; Value = "100nF 0805 10% 50V X7R 0805B104K500NT (FNG)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "82-13-46"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "10%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "D1" ("D1"); Footprint = "FP_SMA"; UniqueID = "\XSJKABQK" ("\XSJKABQK")
+Change component parameters (AddParameter): Name = "Name"; Value = "VISHAY SMAJ5.0A-E3/61"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "9550941"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Farnell"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "U_Z"; Value = "6.7V"; VariantName = "[No Variations]"
+Change component parameters: Designator = "F1" ("F1"); Footprint = "FP_MULTIFUSE"; UniqueID = "\SOVTFASZ" ("\SOVTFASZ")
+Change component parameters (AddParameter): Name = "Name"; Value = "1.25A 15V 1812L125/16DR POLYFUSE SMD 1812 (LFS) ?LF125-16?"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "44-04-71"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q1" ("Q1"); Footprint = "FP_SOT23-3"; UniqueID = "\MSYZUCZX" ("\MSYZUCZX")
+Change component parameters (AddParameter): Name = "Name"; Value = "TSM2302CX (TSC) N-POWERFET 20V 3.2A Rds<0.065R Qg=7.8nC SOT-23 (SI2302)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "86-02-83"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R1" ("R1"); Footprint = "FP_0805_RES"; UniqueID = "\UEZAIUDD" ("\UEZAIUDD")
+Change component parameters (AddParameter): Name = "Name"; Value = "100K 0805 1% CR-05FL7--100K 0.125W (VIK)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0.125W"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "80-11-10"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100k"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R2" ("R2"); Footprint = "FP_0805_RES"; UniqueID = "\BYSNRYBX" ("\BYSNRYBX")
+Change component parameters (AddParameter): Name = "Name"; Value = "1K00 0805 1% CR-05FL7----1K 0.125W (VIK)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0.125W"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "80-10-86"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "1K"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R3" ("R3"); Footprint = "FP_0805_RES"; UniqueID = "\LCVIZFAU" ("\LCVIZFAU")
+Change component parameters (AddParameter): Name = "Name"; Value = "10K0 0805 1% CR-05FL7---10K 0.125W (VIK)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0.125W"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "80-10-98"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "1%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10k"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R5" ("R5"); Footprint = "FP_0805_RES"; UniqueID = "\UKWGRSYJ" ("\UKWGRSYJ")
+Change component parameters (AddParameter): Name = "Name"; Value = "100R 0805 1% CR-05FL7--100R 0.125W (VIK)"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0.125W"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "80-10-74"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U2" ("U2"); Footprint = "SO-20"; UniqueID = "\LVVRTJPU" ("\LVVRTJPU")
+Change component parameters (AddParameter): Name = "Name"; Value = "74HCT244D,653 (NXP) 8xBUFFER/LINE DRIVER 3-STATE OUTPUT SO-20 WIDE"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "87-00-95"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U3" ("U3"); Footprint = "SO-20"; UniqueID = "\UGFODXUV" ("\UGFODXUV")
+Change component parameters (AddParameter): Name = "Name"; Value = "74HCT244D,653 (NXP) 8xBUFFER/LINE DRIVER 3-STATE OUTPUT SO-20 WIDE"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "87-00-95"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "Lomex"; VariantName = "[No Variations]"
+Change component parameters: Designator = "U4" ("U4"); Footprint = "FP_LCD"; UniqueID = "\OALJJTZG" ("\OALJJTZG")
+Change component parameters (AddParameter): Name = "Name"; Value = "RG12864B-TIW-VRAYSTAR OPTRONICS"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Reference"; Value = "RG12864B-TIW-V"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier"; Value = "TME"; VariantName = "[No Variations]"
+Added Component: Designator=POT1(potentiometer)
+Add component (AddParameter): Name = "Name"; Value = "AMPHENOL PIHER SENSORS AND CONTROLS PC16SH-10IP06-103A2020-TA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Power"; Value = "200mW"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Reference"; Value = "3128399"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier"; Value = "Farnell"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "20%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10K"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GNDIC1 Pin=POT1-1
+Added Pin To Net: NetName=NetPOT?_3 Pin=POT1-2
+Added Pin To Net: NetName=NetPOT?_2 Pin=POT1-3
+Change Net Name : Old Net Name=NetPOT?_2 New Net Name=NetPOT1_3
+Change Net Name : Old Net Name=NetPOT?_3 New Net Name=NetPOT1_2
+Added Member To Class: ClassName=kijelzo Member=Component POT1 10K

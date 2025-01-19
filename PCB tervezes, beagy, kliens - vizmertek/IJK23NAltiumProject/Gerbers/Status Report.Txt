@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : PCB Document [vizmertekpcb.PcbDoc]
+   Generated File[LandiAndras_21.TXT]
+   Generated File[LandiAndras_21.LDP]
+   Generated File[LandiAndras_21.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 11:11:33 On 12/03/2024

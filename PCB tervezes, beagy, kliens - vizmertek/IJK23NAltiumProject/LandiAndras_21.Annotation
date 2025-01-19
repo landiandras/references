@@ -1,0 +1,16 @@
+[DesignatorManager]
+
+[SheetNumberManager]
+SheetNumberOrder=Display Order
+SheetNumberMethod=Increasing
+DocumentName0=gyorsulasmero.SchDoc
+UniqueIDPath0=
+SheetNumber0=1
+DocumentName1=kijelzo.SchDoc
+UniqueIDPath1=
+SheetNumber1=2
+DocumentName2=Nucleo.SchDoc
+UniqueIDPath2=
+SheetNumber2=3
+
+
