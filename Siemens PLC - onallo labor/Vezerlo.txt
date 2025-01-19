@@ -1,0 +1,1016 @@
+// "sensors_to_int_position"(in1g:="proximity1ground",
+//                           in11:="proximity11",
+//                           in12:="proximity12",
+//                           in13:="proximity13",
+//                           in14:="proximity14",
+//                           in15:="proximity15",
+//                           in2g:="proximity2ground",
+//                           in21:="proximity21",
+//                           in22:="proximity22",
+//                           in23:="proximity23",
+//                           in24:="proximity24",
+//                           in25:="proximity25",
+//                           out1=>"elevator1position",
+//                           out2=>"elevator2position");
+
+IF "proximity1ground" THEN
+    "elevator1position" := 0;
+END_IF;
+IF "proximity11" THEN
+    "elevator1position" := 1;
+END_IF;
+IF "proximity12" THEN
+    "elevator1position" := 2;
+END_IF;
+IF "proximity13" THEN
+    "elevator1position" := 3;
+END_IF;
+IF "proximity14" THEN
+    "elevator1position" := 4;
+END_IF;
+IF "proximity15" THEN
+    "elevator1position" := 5;
+END_IF;
+
+IF "proximity2ground" THEN
+    "elevator2position" := 0;
+END_IF;
+IF "proximity21" THEN
+    "elevator2position" := 1;
+END_IF;
+IF "proximity22" THEN
+    "elevator2position" := 2;
+END_IF;
+IF "proximity23" THEN
+    "elevator2position" := 3;
+END_IF;
+IF "proximity24" THEN
+    "elevator2position" := 4;
+END_IF;
+IF "proximity25" THEN
+    "elevator2position" := 5;
+END_IF;
+
+
+
+
+//heading:
+//0: idle
+//1: down
+//2: up
+
+
+IF #elevator1.callcompleted THEN
+    CASE "elevator1position" OF
+        0:
+            "req10" := FALSE;
+            "requpgnd" := FALSE;
+        1:
+            "req11" := FALSE;
+            "requp1" := FALSE;
+            "reqdown1" := FALSE;
+        2:
+            "req12" := FALSE;
+            "requp2" := FALSE;
+            "reqdown2" := FALSE;
+        3:
+            "req13" := FALSE;
+            "requp3" := FALSE;
+            "reqdown3" := FALSE;
+        4:
+            "req14" := FALSE;
+            "requp4" := FALSE;
+            "reqdown4" := FALSE;
+        5:
+            "req15" := FALSE;
+            "reqdown5" := FALSE;
+    END_CASE;
+    #elevator1ack := TRUE;
+ELSE
+    #elevator1ack := FALSE;
+END_IF;
+
+
+IF #elevator2.callcompleted THEN
+    CASE "elevator2position" OF
+        0:
+            "req20" := FALSE;
+            "requpgnd" := FALSE;
+        1:
+            "req21" := FALSE;
+            "requp1" := FALSE;
+            "reqdown1" := FALSE;
+        2:
+            "req22" := FALSE;
+            "requp2" := FALSE;
+            "reqdown2" := FALSE;
+        3:
+            "req23" := FALSE;
+            "requp3" := FALSE;
+            "reqdown3" := FALSE;
+        4:
+            "req24" := FALSE;
+            "requp4" := FALSE;
+            "reqdown4" := FALSE;
+        5:
+            "req25" := FALSE;
+            "reqdown5" := FALSE;
+            
+    END_CASE;
+    
+    #elevator2ack := TRUE;
+ELSE
+    #elevator2ack := FALSE;
+END_IF;
+// distance calculation, if both idle:
+IF ((#elevator1heading = 0 AND #elevator2heading = 0) AND ("requpgnd" OR "requp2" OR "requp3" OR "requp4" OR "reqdown5" OR "reqdown4" OR "reqdown3" OR "reqdown2" OR "reqdown1")) THEN
+    IF "requpgnd" THEN
+        #elevator1distance := "elevator1position";
+        #elevator2distance := "elevator2position";
+        #reqlocation := 0;
+        "requpgnd" := FALSE;
+    END_IF;
+    IF ("requp1" OR "reqdown1") THEN
+        #elevator1distance := ABS("elevator1position" - 1);
+        #elevator2distance := ABS("elevator2position" - 1);
+        #reqlocation := 1;
+        "requp1" := FALSE;
+        "reqdown1" := FALSE;
+    END_IF;
+    IF ("requp2" OR "reqdown2") THEN
+        #elevator1distance := ABS("elevator1position" - 2);
+        #elevator2distance := ABS("elevator2position" - 2);
+        #reqlocation := 2;
+        "requp2" := FALSE;
+        "reqdown2" := FALSE;
+    END_IF;
+    IF ("requp3" OR "reqdown3") THEN
+        #elevator1distance := ABS("elevator1position" - 3);
+        #elevator2distance := ABS("elevator2position" - 3);
+        #reqlocation := 3;
+        "requp3" := FALSE;
+        "reqdown3" := FALSE;
+    END_IF;
+    IF ("requp4" OR "reqdown4") THEN
+        #elevator1distance := ABS("elevator1position" - 4);
+        #elevator2distance := ABS("elevator2position" - 4);
+        #reqlocation := 4;
+        "requp4" := FALSE;
+        "reqdown4" := FALSE;
+    END_IF;
+    IF "reqdown5" THEN
+        #elevator1distance := 5 - "elevator1position";
+        #elevator2distance := 5 - "elevator2position";
+        #reqlocation := 5;
+        "reqdown5" := FALSE;
+    END_IF;
+    
+    IF (#elevator1distance > #elevator2distance) THEN
+        #elevator2next := #reqlocation;
+        CASE #reqlocation OF
+            0:
+                "req20" := TRUE;
+            1:
+                "req21" := TRUE;
+            2:
+                "req22" := TRUE;
+            3:
+                "req23" := TRUE;
+            4:
+                "req24" := TRUE;
+            5:
+                "req25" := TRUE;
+                
+        END_CASE;
+
+        
+    ELSE
+        #elevator1next := #reqlocation;
+        CASE #reqlocation OF
+            0:
+                "req10" := TRUE;
+            1:
+                "req11" := TRUE;
+            2:
+                "req12" := TRUE;
+            3:
+                "req13" := TRUE;
+            4:
+                "req14" := TRUE;
+            5:
+                "req15" := TRUE;
+                
+        END_CASE;
+
+    END_IF;
+    
+    ;
+    
+    ELSE
+    //ELEVATOR1:
+    
+    
+    IF (#elevator1heading = 2) OR (#elevator1heading = 0) THEN             //felfelé lift 1
+        CASE "elevator1position" OF
+            0:
+                IF (("req10" OR "requpgnd") AND "proximity1ground") THEN
+                    #elevator1next := 0;
+                ELSIF ("req11" OR "requp1") THEN
+                    #elevator1next := 1;
+                    #elevator1heading := 2;
+                ELSIF ("req12" OR "requp2") THEN
+                    #elevator1next := 2;
+                    #elevator1heading := 2;
+                ELSIF ("req13" OR "requp3") THEN
+                    #elevator1next := 3;
+                    #elevator1heading := 2;
+                ELSIF ("req14" OR "requp4") THEN
+                    #elevator1next := 4;
+                    #elevator1heading := 2;
+                ELSIF ("req15") THEN
+                    #elevator1next := 5;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown5") THEN
+                    "reqdown5" := FALSE;
+                    "req15" := TRUE;
+                    #elevator1next := 5;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown4") THEN
+                    "reqdown4" := FALSE;
+                    "req14" := TRUE;
+                    #elevator1next := 4;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown3") THEN
+                    "reqdown3" := FALSE;
+                    "req13" := TRUE;
+                    #elevator1next := 3;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown2") THEN
+                    "reqdown4" := FALSE;
+                    "req12" := TRUE;
+                    #elevator1next := 2;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown1") THEN
+                    "reqdown1" := FALSE;
+                    "req11" := TRUE;
+                    #elevator1next := 1;
+                    #elevator1heading := 2;
+                ELSE
+                    #elevator1heading := 0;
+                END_IF;
+                
+            1:
+                IF (("req11" OR "requp1") AND "proximity11") THEN
+                    #elevator1next := 1;
+                ELSIF ("req12" OR "requp2") THEN
+                    #elevator1next := 2;
+                    #elevator1heading := 2;
+                ELSIF ("req13" OR "requp3") THEN
+                    #elevator1next := 3;
+                    #elevator1heading := 2;
+                ELSIF ("req14" OR "requp4") THEN
+                    #elevator1next := 4;
+                    #elevator1heading := 2;
+                ELSIF ("req15") THEN
+                    #elevator1next := 5;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown5") THEN
+                    "reqdown5" := FALSE;
+                    "req15" := TRUE;
+                    #elevator1next := 5;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown4") THEN
+                    "reqdown4" := FALSE;
+                    "req14" := TRUE;
+                    #elevator1next := 4;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown3") THEN
+                    "reqdown3" := FALSE;
+                    "req13" := TRUE;
+                    #elevator1next := 3;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown2") THEN
+                    "reqdown4" := FALSE;
+                    "req12" := TRUE;
+                    #elevator1next := 2;
+                    #elevator1heading := 2;
+                ELSE
+                    #elevator1heading := 0;
+                END_IF;
+                
+            2:
+                IF (("req12" OR "requp2") AND "proximity12") THEN
+                    #elevator1next := 2;
+                ELSIF ("req13" OR "requp3") THEN
+                    #elevator1next := 3;
+                    #elevator1heading := 2;
+                ELSIF ("req14" OR "requp4") THEN
+                    #elevator1next := 4;
+                    #elevator1heading := 2;
+                ELSIF ("req15") THEN
+                    #elevator1next := 5;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown5") THEN
+                    "reqdown5" := FALSE;
+                    "req15" := TRUE;
+                    #elevator1next := 5;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown4") THEN
+                    "reqdown4" := FALSE;
+                    "req14" := TRUE;
+                    #elevator1next := 4;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown3") THEN
+                    "reqdown3" := FALSE;
+                    "req13" := TRUE;
+                    #elevator1next := 3;
+                    #elevator1heading := 2;
+                ELSE
+                    #elevator1heading := 0;
+                END_IF;
+                
+            3:
+                IF (("req13" OR "requp3" AND "proximity13")) THEN
+                    #elevator1next := 3;
+                ELSIF ("req14" OR "requp4") THEN
+                    #elevator1next := 4;
+                    #elevator1heading := 2;
+                ELSIF ("req15") THEN
+                    #elevator1next := 5;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown5") THEN
+                    "reqdown5" := FALSE;
+                    "req15" := TRUE;
+                    #elevator1next := 5;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown4") THEN
+                    "reqdown4" := FALSE;
+                    "req14" := TRUE;
+                    #elevator1next := 4;
+                    #elevator1heading := 2;
+                ELSE
+                    #elevator1heading := 0;
+                END_IF;
+                ;
+            4:
+                IF (("req14" OR "requp4") AND "proximity14") THEN
+                    #elevator1next := 4;
+                ELSIF ("req15") THEN
+                    #elevator1next := 5;
+                    #elevator1heading := 2;
+                ELSIF ("reqdown5") THEN
+                    "reqdown5" := FALSE;
+                    "req15" := TRUE;
+                    #elevator1next := 5;
+                    #elevator1heading := 2;
+                ELSE
+                    #elevator1heading := 0;
+                END_IF;
+                
+            5:
+                IF ("req15" AND "proximity15") THEN
+                    #elevator1next := 5;
+                END_IF;
+                #elevator1heading := 0;
+        END_CASE;
+        
+        ;
+    END_IF;
+    
+    
+    IF (#elevator1heading = 1) OR (#elevator1heading = 0) THEN             //lefelé lift1
+        CASE "elevator1position" OF
+            0:
+                IF ("req10" AND "proximity1ground") THEN
+                    #elevator1next := 0;
+                END_IF;
+                #elevator1heading := 0;
+                
+            1:
+                IF (("req11" OR "reqdown1") AND "proximity11") THEN
+                    #elevator1next := 1;
+                ELSIF ("req10") THEN
+                    #elevator1next := 0;
+                    #elevator1heading := 1;
+                ELSIF ("requpgnd") THEN
+                    "requpgnd" := FALSE;
+                    "req10" := TRUE;
+                    #elevator1next := 0;
+                    #elevator1heading := 1;
+                ELSE
+                    #elevator1heading := 0;
+                END_IF;
+                
+            2:
+                IF (("req12" OR "reqdown2") AND "proximity12") THEN
+                    #elevator1next := 2;
+                ELSIF ("req11" OR "reqdown1") THEN
+                    #elevator1next := 1;
+                    #elevator1heading := 1;
+                ELSIF ("req10") THEN
+                    #elevator1next := 0;
+                    #elevator1heading := 1;
+                ELSIF ("requpgnd") THEN
+                    "requpgnd" := FALSE;
+                    "req10" := TRUE;
+                    #elevator1next := 0;
+                    #elevator1heading := 1;
+                ELSIF ("requp1") THEN
+                    "requp1" := FALSE;
+                    "req11" := TRUE;
+                    #elevator1next := 1;
+                    #elevator1heading := 1;
+                ELSE
+                    #elevator1heading := 0;
+                END_IF;
+                
+            3:
+                IF (("req13" OR "reqdown3") AND "proximity13") THEN
+                    #elevator1next := 3;
+                ELSIF ("req12" OR "reqdown2") THEN
+                    #elevator1next := 2;
+                    #elevator1heading := 1;
+                ELSIF ("req11" OR "reqdown1") THEN
+                    #elevator1next := 1;
+                    #elevator1heading := 1;
+                ELSIF ("req10") THEN
+                    #elevator1next := 0;
+                    #elevator1heading := 1;
+                ELSIF ("requpgnd") THEN
+                    "requpgnd" := FALSE;
+                    "req10" := TRUE;
+                    #elevator1next := 0;
+                    #elevator1heading := 1;
+                ELSIF ("requp1") THEN
+                    "requp1" := FALSE;
+                    "req11" := TRUE;
+                    #elevator1next := 1;
+                    #elevator1heading := 1;
+                ELSIF ("requp2") THEN
+                    "requp2" := FALSE;
+                    "req12" := TRUE;
+                    #elevator1next := 2;
+                    #elevator1heading := 1;
+                ELSE
+                    #elevator1heading := 0;
+                END_IF;
+            4:
+                IF (("req14" OR "reqdown4") AND "proximity14") THEN
+                    #elevator1next := 4;
+                ELSIF ("req13" OR "reqdown3") THEN
+                    #elevator1next := 3;
+                    #elevator1heading := 1;
+                ELSIF ("req12" OR "reqdown2") THEN
+                    #elevator1next := 2;
+                    #elevator1heading := 1;
+                ELSIF ("req11" OR "reqdown1") THEN
+                    #elevator1next := 1;
+                    #elevator1heading := 1;
+                ELSIF ("req10") THEN
+                    #elevator1next := 0;
+                    #elevator1heading := 1;
+                ELSIF ("requpgnd") THEN
+                    "requpgnd" := FALSE;
+                    "req10" := TRUE;
+                    #elevator1next := 0;
+                    #elevator1heading := 1;
+                ELSIF ("requp1") THEN
+                    "requp1" := FALSE;
+                    "req11" := TRUE;
+                    #elevator1next := 1;
+                    #elevator1heading := 1;
+                ELSIF ("requp2") THEN
+                    "requp2" := FALSE;
+                    "req12" := TRUE;
+                    #elevator1next := 2;
+                    #elevator1heading := 1;
+                ELSIF ("requp3") THEN
+                    "requp3" := FALSE;
+                    "req13" := TRUE;
+                    #elevator1next := 3;
+                    #elevator1heading := 1;
+                ELSE
+                    #elevator1heading := 0;
+                END_IF;
+                
+            5:
+                IF (("req15" OR "reqdown5") AND "proximity15") THEN
+                    #elevator1next := 5;
+                ELSIF ("req14" OR "reqdown4") THEN
+                    #elevator1next := 4;
+                    #elevator1heading := 1;
+                ELSIF ("req13" OR "reqdown3") THEN
+                    #elevator1next := 3;
+                    #elevator1heading := 1;
+                ELSIF ("req12" OR "reqdown2") THEN
+                    #elevator1next := 2;
+                    #elevator1heading := 1;
+                ELSIF ("req11" OR "reqdown1") THEN
+                    #elevator1next := 1;
+                    #elevator1heading := 1;
+                ELSIF ("req10") THEN
+                    #elevator1next := 0;
+                    #elevator1heading := 1;
+                ELSIF ("requpgnd") THEN
+                    "requpgnd" := FALSE;
+                    "req10" := TRUE;
+                    #elevator1next := 0;
+                    #elevator1heading := 1;
+                ELSIF ("requp1") THEN
+                    "requp1" := FALSE;
+                    "req11" := TRUE;
+                    #elevator1next := 1;
+                    #elevator1heading := 1;
+                ELSIF ("requp2") THEN
+                    "requp2" := FALSE;
+                    "req12" := TRUE;
+                    #elevator1next := 2;
+                    #elevator1heading := 1;
+                ELSIF ("requp3") THEN
+                    "requp3" := FALSE;
+                    "req13" := TRUE;
+                    #elevator1next := 3;
+                    #elevator1heading := 1;
+                ELSIF ("requp4") THEN
+                    "requp4" := FALSE;
+                    "req14" := TRUE;
+                    #elevator1next := 4;
+                    #elevator1heading := 1;
+                    
+                ELSE
+                    #elevator1heading := 0;
+                END_IF;
+        END_CASE;
+        
+        ;
+    END_IF;
+    
+    //"Elevator2"
+    
+    
+    IF (#elevator2heading = 2) OR (#elevator2heading = 0) THEN             //felfelé lift 2
+        CASE "elevator2position" OF
+            0:
+                IF (("req20" OR "requpgnd") AND "proximity2ground") THEN
+                    #elevator2next := 0;
+                ELSIF ("req21" OR "requp1") THEN
+                    #elevator2next := 1;
+                    #elevator2heading := 2;
+                ELSIF ("req22" OR "requp2") THEN
+                    #elevator2next := 2;
+                    #elevator2heading := 2;
+                ELSIF ("req23" OR "requp3") THEN
+                    #elevator2next := 3;
+                    #elevator2heading := 2;
+                ELSIF ("req24" OR "requp4") THEN
+                    #elevator2next := 4;
+                    #elevator2heading := 2;
+                ELSIF ("req25") THEN
+                    #elevator2next := 5;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown5") THEN
+                    "reqdown5" := FALSE;
+                    "req25" := TRUE;
+                    #elevator2next := 5;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown4") THEN
+                    "reqdown4" := FALSE;
+                    "req24" := TRUE;
+                    #elevator2next := 4;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown3") THEN
+                    "reqdown3" := FALSE;
+                    "req23" := TRUE;
+                    #elevator2next := 3;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown2") THEN
+                    "reqdown4" := FALSE;
+                    "req22" := TRUE;
+                    #elevator2next := 2;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown1") THEN
+                    "reqdown1" := FALSE;
+                    "req21" := TRUE;
+                    #elevator2next := 1;
+                    #elevator2heading := 2;
+                ELSE
+                    #elevator2heading := 0;
+                END_IF;
+                
+            1:
+                IF (("req21" OR "requp1") AND "proximity21") THEN
+                    #elevator2next := 1;
+                ELSIF ("req22" OR "requp2") THEN
+                    #elevator2next := 2;
+                    #elevator2heading := 2;
+                ELSIF ("req23" OR "requp3") THEN
+                    #elevator2next := 3;
+                    #elevator2heading := 2;
+                ELSIF ("req24" OR "requp4") THEN
+                    #elevator2next := 4;
+                    #elevator2heading := 2;
+                ELSIF ("req25") THEN
+                    #elevator2next := 5;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown5") THEN
+                    "reqdown5" := FALSE;
+                    "req25" := TRUE;
+                    #elevator2next := 5;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown4") THEN
+                    "reqdown4" := FALSE;
+                    "req24" := TRUE;
+                    #elevator2next := 4;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown3") THEN
+                    "reqdown3" := FALSE;
+                    "req23" := TRUE;
+                    #elevator2next := 3;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown2") THEN
+                    "reqdown4" := FALSE;
+                    "req22" := TRUE;
+                    #elevator2next := 2;
+                    #elevator2heading := 2;
+                ELSE
+                    #elevator2heading := 0;
+                END_IF;
+                
+            2:
+                IF (("req22" OR "requp2") AND "proximity22") THEN
+                    #elevator2next := 2;
+                ELSIF ("req23" OR "requp3") THEN
+                    #elevator2next := 3;
+                    #elevator2heading := 2;
+                ELSIF ("req24" OR "requp4") THEN
+                    #elevator2next := 4;
+                    #elevator2heading := 2;
+                ELSIF ("req25") THEN
+                    #elevator2next := 5;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown5") THEN
+                    "reqdown5" := FALSE;
+                    "req25" := TRUE;
+                    #elevator2next := 5;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown4") THEN
+                    "reqdown4" := FALSE;
+                    "req24" := TRUE;
+                    #elevator2next := 4;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown3") THEN
+                    "reqdown3" := FALSE;
+                    "req23" := TRUE;
+                    #elevator2next := 3;
+                    #elevator2heading := 2;
+                ELSE
+                    #elevator2heading := 0;
+                END_IF;
+                
+            3:
+                IF (("req23" OR "requp3") AND "proximity23") THEN
+                    #elevator2next := 3;
+                ELSIF ("req24" OR "requp4") THEN
+                    #elevator2next := 4;
+                    #elevator2heading := 2;
+                ELSIF ("req25") THEN
+                    #elevator2next := 5;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown5") THEN
+                    "reqdown5" := FALSE;
+                    "req25" := TRUE;
+                    #elevator2next := 5;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown4") THEN
+                    "reqdown4" := FALSE;
+                    "req24" := TRUE;
+                    #elevator2next := 4;
+                    #elevator2heading := 2;
+                ELSE
+                    #elevator2heading := 0;
+                END_IF;
+                ;
+            4:
+                IF (("req24" OR "requp4") AND "proximity24") THEN
+                    #elevator2next := 4;
+                ELSIF ("req25") THEN
+                    #elevator2next := 5;
+                    #elevator2heading := 2;
+                ELSIF ("reqdown5") THEN
+                    "reqdown5" := FALSE;
+                    "req25" := TRUE;
+                    #elevator2next := 5;
+                    #elevator2heading := 2;
+                ELSE
+                    #elevator2heading := 0;
+                END_IF;
+                
+            5:
+                IF ("req25" AND "proximity25") THEN
+                    #elevator2next := 5;
+                END_IF;
+                #elevator2heading := 0;
+        END_CASE;
+        
+        ;
+    END_IF;
+    
+    
+    IF (#elevator2heading = 1) OR (#elevator2heading = 0) THEN             //lefelé lift 2
+        CASE "elevator2position" OF
+            0:
+                IF ("req20" AND "proximity2ground") THEN
+                    #elevator2next := 0;
+                END_IF;
+                #elevator2heading := 0;
+                
+            1:
+                IF (("req21" OR "reqdown1") AND "proximity21") THEN
+                    #elevator2next := 1;
+                ELSIF ("req20") THEN
+                    #elevator2next := 0;
+                    #elevator2heading := 1;
+                ELSIF ("requpgnd") THEN
+                    "requpgnd" := FALSE;
+                    "req20" := TRUE;
+                    #elevator2next := 0;
+                    #elevator2heading := 1;
+                ELSE
+                    #elevator2heading := 0;
+                END_IF;
+                
+            2:
+                IF (("req22" OR "reqdown2") AND "proximity22") THEN
+                    #elevator2next := 2;
+                ELSIF ("req21" OR "reqdown1") THEN
+                    #elevator2next := 1;
+                    #elevator2heading := 1;
+                ELSIF ("req20") THEN
+                    #elevator2next := 0;
+                    #elevator2heading := 1;
+                ELSIF ("requpgnd") THEN
+                    "requpgnd" := FALSE;
+                    "req20" := TRUE;
+                    #elevator2next := 0;
+                    #elevator2heading := 1;
+                ELSIF ("requp1") THEN
+                    "requp1" := FALSE;
+                    "req21" := TRUE;
+                    #elevator2next := 1;
+                    #elevator2heading := 1;
+                ELSE
+                    #elevator2heading := 0;
+                END_IF;
+                
+            3:
+                IF (("req23" OR "reqdown3") AND "proximity23") THEN
+                    #elevator2next := 3;
+                ELSIF ("req22" OR "reqdown2") THEN
+                    #elevator2next := 2;
+                    #elevator2heading := 1;
+                ELSIF ("req21" OR "reqdown1") THEN
+                    #elevator2next := 1;
+                    #elevator2heading := 1;
+                ELSIF ("req20") THEN
+                    #elevator2next := 0;
+                    #elevator2heading := 1;
+                ELSIF ("requpgnd") THEN
+                    "requpgnd" := FALSE;
+                    "req20" := TRUE;
+                    #elevator2next := 0;
+                    #elevator2heading := 1;
+                ELSIF ("requp1") THEN
+                    "requp1" := FALSE;
+                    "req21" := TRUE;
+                    #elevator2next := 1;
+                    #elevator2heading := 1;
+                ELSIF ("requp2") THEN
+                    "requp2" := FALSE;
+                    "req22" := TRUE;
+                    #elevator2next := 2;
+                    #elevator2heading := 1;
+                ELSE
+                    #elevator2heading := 0;
+                END_IF;
+            4:
+                IF (("req24" OR "reqdown4") AND "proximity24") THEN
+                    #elevator2next := 4;
+                ELSIF ("req23" OR "reqdown3") THEN
+                    #elevator2next := 3;
+                    #elevator2heading := 1;
+                ELSIF ("req22" OR "reqdown2") THEN
+                    #elevator2next := 2;
+                    #elevator2heading := 1;
+                ELSIF ("req21" OR "reqdown1") THEN
+                    #elevator2next := 1;
+                    #elevator2heading := 1;
+                ELSIF ("req20") THEN
+                    #elevator2next := 0;
+                    #elevator2heading := 1;
+                ELSIF ("requpgnd") THEN
+                    "requpgnd" := FALSE;
+                    "req20" := TRUE;
+                    #elevator2next := 0;
+                    #elevator2heading := 1;
+                ELSIF ("requp1") THEN
+                    "requp1" := FALSE;
+                    "req21" := TRUE;
+                    #elevator2next := 1;
+                    #elevator2heading := 1;
+                ELSIF ("requp2") THEN
+                    "requp2" := FALSE;
+                    "req22" := TRUE;
+                    #elevator2next := 2;
+                    #elevator2heading := 1;
+                ELSIF ("requp3") THEN
+                    "requp3" := FALSE;
+                    "req23" := TRUE;
+                    #elevator2next := 3;
+                    #elevator2heading := 1;
+                ELSE
+                    #elevator2heading := 0;
+                END_IF;
+                
+            5:
+                IF (("req25" OR "reqdown5") AND "proximity25") THEN
+                    #elevator2next := 5;
+                ELSIF ("req24" OR "reqdown4") THEN
+                    #elevator2next := 4;
+                    #elevator2heading := 1;
+                ELSIF ("req23" OR "reqdown3") THEN
+                    #elevator2next := 3;
+                    #elevator2heading := 1;
+                ELSIF ("req22" OR "reqdown2") THEN
+                    #elevator2next := 2;
+                    #elevator2heading := 1;
+                ELSIF ("req21" OR "reqdown1") THEN
+                    #elevator2next := 1;
+                    #elevator2heading := 1;
+                ELSIF ("req20") THEN
+                    #elevator2next := 0;
+                    #elevator2heading := 1;
+                ELSIF ("requpgnd") THEN
+                    "requpgnd" := FALSE;
+                    "req20" := TRUE;
+                    #elevator2next := 0;
+                    #elevator2heading := 1;
+                ELSIF ("requp1") THEN
+                    "requp1" := FALSE;
+                    "req21" := TRUE;
+                    #elevator2next := 1;
+                    #elevator2heading := 1;
+                ELSIF ("requp2") THEN
+                    "requp2" := FALSE;
+                    "req22" := TRUE;
+                    #elevator2next := 2;
+                    #elevator2heading := 1;
+                ELSIF ("requp3") THEN
+                    "requp3" := FALSE;
+                    "req23" := TRUE;
+                    #elevator2next := 3;
+                    #elevator2heading := 1;
+                ELSIF ("requp4") THEN
+                    "requp4" := FALSE;
+                    "req24" := TRUE;
+                    #elevator2next := 4;
+                    #elevator2heading := 1;
+                    
+                ELSE
+                    #elevator2heading := 0;
+                END_IF;
+        END_CASE;
+        
+        ;
+    END_IF;
+    
+END_IF;
+    
+    
+
+
+
+
+    IF #elevator1.idling THEN
+        CASE "elevator1position" OF
+            0:
+                IF ("requpgnd" OR "req10") THEN
+                    #elevator1stopidling := TRUE;
+                ELSE
+                    #elevator1stopidling := FALSE;
+                END_IF;
+                ;
+            1:
+                IF ("requp1" OR "reqdown1" OR "req11") THEN
+                    #elevator1stopidling := TRUE;
+                ELSE
+                    #elevator1stopidling := FALSE;
+                END_IF;
+                ;
+            2:
+                IF ("requp2" OR "reqdown2" OR "req12") THEN
+                    #elevator1stopidling := TRUE;
+                ELSE
+                    #elevator1stopidling := FALSE;
+                END_IF;
+                ;
+            3:
+                IF ("requp3" OR "reqdown3" OR "req13") THEN
+                    #elevator1stopidling := TRUE;
+                ELSE
+                    #elevator1stopidling := FALSE;
+                END_IF;
+                ;
+            4:
+                IF ("requp4" OR "reqdown4" OR "req14") THEN
+                    #elevator1stopidling := TRUE;
+                ELSE
+                    #elevator1stopidling := FALSE;
+                END_IF;
+                ;
+            5:
+                IF ("reqdown5" OR "req15") THEN
+                    #elevator1stopidling := TRUE;
+                ELSE
+                    #elevator1stopidling := FALSE;
+                END_IF;
+                ;
+        END_CASE;
+        
+    END_IF;
+    
+    IF #elevator2.idling THEN
+        CASE "elevator2position" OF
+            0:
+                IF ("requpgnd" OR "req20") THEN
+                    #elevator2stopidling := TRUE;
+                ELSE
+                    #elevator2stopidling := FALSE;
+                END_IF;
+                ;
+            1:
+                IF ("requp1" OR "reqdown1" OR "req21") THEN
+                    #elevator2stopidling := TRUE;
+                ELSE
+                    #elevator2stopidling := FALSE;
+                END_IF;
+                ;
+            2:
+                IF ("requp2" OR "reqdown2" OR "req22") THEN
+                    #elevator2stopidling := TRUE;
+                ELSE
+                    #elevator2stopidling := FALSE;
+                END_IF;
+                ;
+            3:
+                IF ("requp3" OR "reqdown3" OR "req23") THEN
+                    #elevator2stopidling := TRUE;
+                ELSE
+                    #elevator2stopidling := FALSE;
+                END_IF;
+                ;
+            4:
+                IF ("requp4" OR "reqdown4" OR "req24") THEN
+                    #elevator2stopidling := TRUE;
+                ELSE
+                    #elevator2stopidling := FALSE;
+                END_IF;
+                ;
+            5:
+                IF ("reqdown5" OR "req25") THEN
+                    #elevator2stopidling := TRUE;
+                ELSE
+                    #elevator2stopidling := FALSE;
+                END_IF;
+                ;
+        END_CASE;
+        
+    END_IF;
+    
+#elevator1(currentlevel:="elevator1position",
+           doorclosedsens:="door1closedsens",
+           dooropensens:="door1opensens",
+           nextlevel:=#elevator1next,
+           las:=true,
+           stopidling:=#elevator1stopidling,
+           closethedoorbutton:="doorclosebutton1",
+           openthedoorbutton:="dooropenbutton1",
+           ack:=#elevator1ack,
+           opendoor=>"door1openmotor",
+           closedoor=>"door1closemotor",
+           headingup=>"elevator1upmotor",
+           headingdown=>"elevator1downmotor");
+#elevator2(currentlevel:="elevator2position",
+           doorclosedsens:="door2closedsens",
+           dooropensens:="door2opensens",
+           nextlevel:=#elevator2next,
+           las:=TRUE,
+           stopidling:=#elevator2stopidling,
+           closethedoorbutton:="doorclosebutton2",
+           openthedoorbutton:="dooropenbutton2",
+           ack:=#elevator2ack,
+           opendoor=>"door2openmotor",
+           closedoor=>"door2closemotor",
+           headingup=>"elevator2upmotor",
+           headingdown=>"elevator2downmotor");
+
+
